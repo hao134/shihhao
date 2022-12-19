@@ -1,0 +1,36 @@
+{% include "header.html" %}
+
+<html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+    {% block content %}
+    <div class="container">
+      <h1 class="heading">Movies</h1>
+      <div class="row">
+        {% for movie in movies %}
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class = "card mb-3" style="width:16rem;" >
+              <div class="front" style="background-image: url('https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}');"></div>
+              <div class="back">
+                  <div>
+                      <div class="title">{{movie['title']}}<span class="release_date">({{movie['release_date'].split('-')[0] }})</span></div>
+                      <div class="overview"><p class="overview">{{movie['overview'][:156] }}...</p></div>
+                      <a href="{{ url_for('show_single_movie', id = movie['id']) }}" class="btn btn-primary" role="button">Open</a>
+                  </div>
+              </div>
+          </div>
+          </div>
+
+        {% endfor %}
+      </div>
+    </div>
+
+    {% endblock %}
+        {% block scripts %}
+            <!-- Optional JavaScript -->
+            {{ bootstrap.load_js() }}
+        {% endblock %}
+    </body>
+</html>
