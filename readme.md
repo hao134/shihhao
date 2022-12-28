@@ -1,14 +1,14 @@
 # 自我介紹
 我是黃世豪，大學畢業於東華物理系，研究所畢業於成大物理系，主要的專業為計算物理，因此我對於寫程式已經有幾年的經驗，求學階段主要是寫matlab和python還有一些linux script來進行一些科學運算及繪圖，畢業後開始工作後感到對寫網頁的興趣，因此在這一年多時間內自學了網頁相關課程，並且結合所學，有了以下三個**主要作品**：
-#### [電影租借電子商店](https://github.com/hao134/ShihHao_Portfolio_and_Collections/tree/master/電影租借電子商店)
+#### [電影租借電子商店](https://github.com/hao134/shihhao/tree/main/ShihHao_Portfolio_and_Collections/電影租借電子商店)
 線上商店，商品是租借電影，並且使用stripe來實現付費系統
 ###### python, flask, bootstrap, flask_sqlalchemy, stripe
 
-#### [類似Google keep的作品_keeper](https://github.com/hao134/ShihHao_Portfolio_and_Collections/tree/master/類似Google%20keep的作品_keeper)
+#### [類似Google keep的作品_keeper](https://github.com/hao134/shihhao/tree/main/ShihHao_Portfolio_and_Collections/類似Google%20keep的作品_keeper)
 用Reactjs 實現類似於google keep的網頁，選擇mongodb作為database
 ###### React, mongodb
 
-#### [輸入資料選擇管線](https://github.com/hao134/ShihHao_Portfolio_and_Collections/tree/master/輸入資料選擇管線)
+#### [輸入資料選擇管線](https://github.com/hao134/shihhao/tree/main/ShihHao_Portfolio_and_Collections/輸入資料選擇管線)
 計算何種包覆材料能夠包覆住指定數量的線材的網站
 ###### python, pandas, numpy, flask
 
