@@ -20,7 +20,7 @@
           
             {% if message == "": %}
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <a href="{{ url_for('add_to_cart', id=movie['id']) }}" class="btn btn-primary btn-lg px-4 me-md-2">Add to card</a>
+                <a href="{{ url_for('add_to_cart', id=movie['id']) }}" class="btn btn-primary btn-lg px-4 me-md-2">Add to cart</a>
             </div>
             {% else %}
 			      <div class="alert alert-success" role="alert">
