@@ -117,6 +117,7 @@ def login():
 
 ## 點 Add to cart就能將電影放進購物車
 ![](https://i.imgur.com/1ABoHcr.png)
+#### 藍色按鈕中應該為 "Add to cart"才對（在作品中已修正錯誤）
 ![](https://i.imgur.com/Nxn3tnf.png)
 ```
 @app.route("/show-movie/<id>")
@@ -169,14 +170,46 @@ def add_to_cart(id):
     return redirect(url_for('show_single_movie', id = id))
 ```
 
-
-## 在menu bar 中點進Dashboard 看，發現電影已在購物車中
-![](https://i.imgur.com/3i7KcSy.png)
-
 ## 在menu bar 中點進cart 中，可以看到購買商品資訊
 ![](https://i.imgur.com/gE18ec6.png)
+```
+@app.route("/cart")
+def show_cart():
+    if not current_user.is_authenticated:
+        return redirect(url_for("login"))
+    global payable_amount
+    global cart_list
+    cart_list = ""
+    total_price = 0
+    all_items = Cart.query.filter_by(buyer = current_user.email, is_purchased = False).all()
+    for item in all_items:
+        total_price += item.price
+    discount = 0
+    if len(all_items) >= 5:
+        for _ in range(int(len(all_items)/5)):
+            discount += 2
+    payable_amount = int(total_price - discount)
+    cart_list = ",".join([item.title for item in all_items])
+    return render_template("cart.html", cart=all_items, total_price = total_price, payable_amount=payable_amount,
+                           public_key = stripe_public_key)
+```
+* 在購物車中列出尚未付費的電影：
+```
+all_items = Cart.query.filter_by(buyer = current_user.email, is_purchased = False).all()
+```
+* 並且依照設定的標準收費（每租五部電影給2元的折扣）：
+```
+for item in all_items:
+        total_price += item.price
+    discount = 0
+    if len(all_items) >= 5:
+        for _ in range(int(len(all_items)/5)):
+            discount += 2
+    payable_amount = int(total_price - discount)
+```
 
-## 在上一部中點 Make Payment, 就能進行付費
+
+## 在上一步驟中點 Make Payment, 就能進行付費
 ![](https://i.imgur.com/VLQUUIh.png)
 ![](https://i.imgur.com/7B5UnCR.png)
 

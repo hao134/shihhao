@@ -212,7 +212,7 @@ def delete_item(id):
 @app.route("/create-checkout-session", methods=["POST"])
 @login_required
 def create_checkout_session():
-    domain_url = "https://quiet-wildwood-43967.herokuapp.com/"
+    domain_url = "https://movie-rent-store-43967.herokuapp.com/"
     session = stripe.checkout.Session.create(
         payment_method_types=["card"],
         line_items=[{
