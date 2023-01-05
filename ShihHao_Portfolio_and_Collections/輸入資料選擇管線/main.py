@@ -88,7 +88,7 @@ def calculate():
         else:
             no_file_sign = 1
             Choosed_nomiater = "沒選擇資料，無法算"
-            return render_template("test2.html", no_file_sign=no_file_sign, Choosed_nomiater=Choosed_nomiater)
+            return render_template("index.html", no_file_sign=no_file_sign, Choosed_nomiater=Choosed_nomiater)
 
         Cable_name = ["CVV","CVVS","PVC","XLPE"]
         cable_map = [CVV_Cable_pd, CVVS_Cable_pd, PVC_Cable_pd, XLPE_Cable_pd]
@@ -109,13 +109,13 @@ def calculate():
             if not 0.0 < float(Choosed_remainder) <= 1.0:
                 out_range_sign = 1
                 Choosed_nomiater = "餘裕超出數值，無法算"
-                return render_template("test2.html", out_range_sign=out_range_sign, Choosed_nomiater=Choosed_nomiater)
+                return render_template("index.html", out_range_sign=out_range_sign, Choosed_nomiater=Choosed_nomiater)
             else:
                 pass
         except:
             no_value_sign = 1
             Choosed_nomiater = "沒輸入數值，無法算"
-            return render_template("test2.html", no_value_sign=no_value_sign, Choosed_nomiater=Choosed_nomiater)
+            return render_template("index.html", no_value_sign=no_value_sign, Choosed_nomiater=Choosed_nomiater)
         cores_item = 0
         sectional_area_item = 0
         try:
@@ -147,7 +147,7 @@ def calculate():
                     break
                 # no_match_sign = 1
                 # Choosed_nomiater = "cannot be found"
-                # return render_template("test2.html", TOTAL_AREA=TOTAL_AREA, Choosed_nomiater=Choosed_nomiater)
+                # return render_template("index.html", TOTAL_AREA=TOTAL_AREA, Choosed_nomiater=Choosed_nomiater)
         # print("Calulated delimeter: ", delimeter_cal)
         # print("Pipe {} delimeter choose: {}".format(Pipe_item, delimeter_choosed))
         # print("Pipe {} 公稱 choose: {}".format(Pipe_item, pipe_choosed.iloc[delimeter_choosed_index, 0]))
@@ -159,76 +159,12 @@ def calculate():
             Choosed_nomiater = "無法推薦pipe"
             length = len(pipe_choosed["管內徑"])
             MAX_PIPE_AREA = round((float(pipe_choosed["管內徑"][length-1]) * float(pipe_choosed["管內徑"][length-1]))* (1/4) * pi,2)
-            return render_template("test2.html", no_match_sign=no_match_sign,TOTAL_AREA=TOTAL_AREA,MAX_PIPE_AREA=MAX_PIPE_AREA,Choosed_nomiater = Choosed_nomiater)
+            return render_template("index.html", no_match_sign=no_match_sign,TOTAL_AREA=TOTAL_AREA,MAX_PIPE_AREA=MAX_PIPE_AREA,Choosed_nomiater = Choosed_nomiater)
 
 
-    return render_template("test2.html", cores=cores, Pipe=Pipe, Cable=Cable, Sectional_area=Sectional_area,\
+    return render_template("index.html", cores=cores, Pipe=Pipe, Cable=Cable, Sectional_area=Sectional_area,\
                            Choosed_nomiater = Choosed_nomiater,Choosed_cores = Choosed_cores,Choosed_remainder=Choosed_remainder,\
                            Choosed_sectional_area = Choosed_sectional_area, Choosed_num_colinear=Choosed_num_colinear,\
                            TOTAL_AREA=TOTAL_AREA, delimeter_cal=delimeter_cal, delimeter_choosed=delimeter_choosed, pipe_delimeter=pipe_delimeter, pipe_nomiater=pipe_nomiater)
 if __name__=="__main__":
-    app.run(host="0.0.0.0",debug=True)
-
-
-#pipe_delimeter = list(pipe_choosed["管內徑"])
-#pipe_nomiater = list(pipe_choosed.iloc[:, 0])
-# @app.route("/result",methods = ["POST","GET"])
-# def calculate2():
-#     Choosed_cores = ""
-#     Choosed_sectional_Area = ""
-#     Choosed_remainder=""
-#     choosed_nomiater=""
-#     if request.method == "POST" and "choosed_cores" in request.form and "choosed_sectional_area" in request.form:
-#         Choosed_cores = float(request.form.get("choosed_cores"))
-#         Choosed_sectional_Area = float(request.form.get("choosed_sectional_area"))
-#         Choosed_remainder = float(request.form.get("choosed_remainder"))
-#         cores_item = 0
-#         sectional_area_item = 0
-#         while cores_item <= len(cores):
-#             if Choosed_cores == cores[cores_item]:
-#                 break
-#             elif cores_item == len(cores):
-#                 print("out of range")
-#             cores_item += 1
-#
-#         for i, item in enumerate(Sectional_area):
-#             if str(item) == Choosed_sectional_Area:
-#                 sectionalarea_item = i
-#     try:
-#         choosed_place = cable_choosed.iloc[sectionalarea_item, cores_item]
-#         TOTAL_AREA = ((choosed_place / 2) * (choosed_place / 2) * pi) / Choosed_remainder
-#         print("TOTAL AREA", TOTAL_AREA)
-#
-#         delimeter_cal = math.sqrt((TOTAL_AREA / pi)) * 2
-#         for i, num in enumerate(pipe_choosed["管內徑"]):
-#             if num > delimeter_cal:
-#                 delimeter_choosed = num
-#                 delimeter_choosed_index = i
-#                 break
-#         # print("Calulated delimeter: ", delimeter_cal)
-#         # print("Pipe {} delimeter choose: {}".format(Pipe_item, delimeter_choosed))
-#         # print("Pipe {} 公稱 choose: {}".format(Pipe_item, pipe_choosed.iloc[delimeter_choosed_index, 0]))
-#         choosed_nomiater = pipe_choosed.iloc[delimeter_choosed_index, 0]
-#     except:
-#         print("OUT OF RANGE")
-#
-#     return render_template("simple.html", choosed_nomiater = choosed_nomiater)
-
-
-
-
-
-# from flask import session
-#
-# @app.route('/')
-# def home():
-#    store = index_generator()
-#    session['store'] = store
-#    return render_template('home.html')
-#
-#  @app.route('/home_city',methods = ['POST'])
-#  def home_city():
-#    CITY=request.form['city']
-#    store = session.get('store')
-#    request_yelp(DEFAULT_LOCATION=CITY,data_store=store)
-#    return render_template('bank.html')
+    app.run(host="0.0.0.0")
