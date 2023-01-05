@@ -1,5 +1,6 @@
 # E commerce website
 [Demo](https://movie-rent-store-43967.herokuapp.com)
+#### 好讀版： https://hackmd.io/mlvsrElJTTumhfPXRzmKlA
 
 ## 點進去首頁，呈現的是當時線上熱門的電影
 ![](https://i.imgur.com/RMHX3xt.jpg)
@@ -200,12 +201,12 @@ all_items = Cart.query.filter_by(buyer = current_user.email, is_purchased = Fals
 * 並且依照設定的標準收費（每租五部電影給2元的折扣）：
 ```
 for item in all_items:
-        total_price += item.price
-    discount = 0
-    if len(all_items) >= 5:
-        for _ in range(int(len(all_items)/5)):
-            discount += 2
-    payable_amount = int(total_price - discount)
+    total_price += item.price
+discount = 0
+if len(all_items) >= 5:
+    for _ in range(int(len(all_items)/5)):
+        discount += 2
+payable_amount = int(total_price - discount)
 ```
 
 
@@ -213,5 +214,89 @@ for item in all_items:
 ![](https://i.imgur.com/VLQUUIh.png)
 ![](https://i.imgur.com/7B5UnCR.png)
 
+```
+@app.route("/create-checkout-session", methods=["POST"])
+@login_required
+def create_checkout_session():
+    domain_url = "https://movie-rent-store-43967.herokuapp.com/"
+    session = stripe.checkout.Session.create(
+        payment_method_types=["card"],
+        line_items=[{
+            "price_data":{
+                "currency":"usd",
+                "product_data":{
+                    "name":cart_list,
+                },
+                "unit_amount":payable_amount*100,
+            },
+            "quantity":1,
+        }],
+        mode="payment",
+        success_url=domain_url+"success",
+        cancel_url=domain_url+"failed"
+    )
+    response = jsonify({"id":session.id})
+    return response
+
+@app.route("/success")
+@login_required
+def success():
+    global cart_list
+    non_purchased_items = Cart.query.filter_by(buyer=current_user.email, is_purchased=False).all()
+    for item in non_purchased_items:
+        id = item.id
+        movie = Cart.query.get(int(id))
+        movie.is_purchased = True
+        db.session.commit()
+    cart_list=""
+    return render_template("success.html")
+
+@app.route("/failed")
+@login_required
+def failed():
+    return render_template("cancel.html")
+```
+* 我是利用stripe來處理金流的，金額單位是cent，因此要乘以100，若是成功則頁面轉至success_url，失敗則是轉至cancel_url：
+```
+session = stripe.checkout.Session.create(
+    payment_method_types=["card"],
+    line_items=[{
+        "price_data":{
+            "currency":"usd",
+            "product_data":{
+                "name":cart_list,
+            },
+            "unit_amount":payable_amount*100,
+        },
+        "quantity":1,
+    }],
+    mode="payment",
+    success_url=domain_url+"success",
+    cancel_url=domain_url+"failed"
+)
+```
+* 若是成功付費，則將 is_purchased 為 False 的 tag 改成 True
+```
+global cart_list
+non_purchased_items = Cart.query.filter_by(buyer=current_user.email, is_purchased=False).all()
+for item in non_purchased_items:
+    id = item.id
+    movie = Cart.query.get(int(id))
+    movie.is_purchased = True
+    db.session.commit()
+cart_list=""
+```
+
+
 ## 回到dashboard看，就能看到本來在cart中的Thor已經在租借過的電影中了
 ![](https://i.imgur.com/gLIGsvB.jpg)
+
+* 我在dashboard中，分為cart_movies(已購買為非)，以及purchased_movies(已購買為是)
+```
+@app.route("/dashboard")
+@login_required
+def dashboard():
+    cart_movies = Cart.query.filter_by(buyer=current_user.email, is_purchased=False).all()
+    purchased_movies = Cart.query.filter_by(buyer=current_user.email, is_purchased=True).all()
+    return render_template("dashboard.html", user=current_user, cart_movies=cart_movies,purchased_movies=purchased_movies)
+```
