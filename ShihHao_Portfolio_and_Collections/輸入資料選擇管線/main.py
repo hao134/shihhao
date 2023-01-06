@@ -1,11 +1,15 @@
 import pandas as pd
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
 import numpy as np
 import math
 
 pi = 3.14159265359
 
 app = Flask(__name__)
+
+@app.route("/explain")
+def explain():
+    return render_template("explain.html")
 
 @app.route("/",methods = ["POST","GET"])
 
