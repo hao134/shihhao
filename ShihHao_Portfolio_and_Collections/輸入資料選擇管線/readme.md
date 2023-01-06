@@ -16,7 +16,7 @@
 ![](https://i.imgur.com/OoGcNcw.png)
 ### 按下submit，會在下面顯示出能用來包覆的pipe管：
 ![](https://i.imgur.com/yPLuSPJ.png)
-### 它的推薦形式是要「至少」哪個管以上
+### 它的推薦形式是要「至少」哪個管(pipe)以上
 
 
 
@@ -31,11 +31,6 @@ pyinstaller -F -w -i [icon 絕/對/路/徑]/pyi_icon.ico cal_pipe_gui.py
 ## 執行畫面
 ![](https://i.imgur.com/MMf1GZL.png)
 
-
-
 ## 將 Flask 版本 用 PYINSTALLER 包裝成 EXE 檔
 指令:
 pyinstaller -F -i pyi_icon.ico --add-data="templates;templates"  app.py
-
-## 更新 pipe tkinter 程式
-簡化介面，把資料內化到程式中
