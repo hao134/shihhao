@@ -6,7 +6,7 @@
 
 #### [類似Google keep的作品_keeper](https://github.com/hao134/shihhao/tree/main/ShihHao_Portfolio_and_Collections/類似Google%20keep的作品_keeper)
 用Reactjs 實現類似於google keep的網頁，選擇mongodb作為database
-###### React, mongodb
+###### React, mongodb, express.js, node.js
 
 #### [輸入資料選擇管線](https://github.com/hao134/shihhao/tree/main/ShihHao_Portfolio_and_Collections/輸入資料選擇管線)
 計算何種包覆材料能夠包覆住指定數量的線材的網站
