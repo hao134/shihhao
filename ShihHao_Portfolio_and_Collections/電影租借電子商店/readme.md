@@ -1,6 +1,5 @@
 # E commerce website
 [Demo](https://movie-rent-store-43967.herokuapp.com)
-#### 好讀版： https://hackmd.io/mlvsrElJTTumhfPXRzmKlA
 
 ## 點進去首頁，呈現的是當時線上熱門的電影
 ![](https://i.imgur.com/RMHX3xt.jpg)
@@ -9,7 +8,7 @@
 ![](https://i.imgur.com/dDw3f5O.png)
 
 ![](https://i.imgur.com/UysPvrg.jpg)
-```
+```python
 @app.route("/", methods = ["GET", "POST"])
 def home():
     global all_movies
@@ -30,7 +29,7 @@ def home():
 ```
 * 實現方法為在 TMDB 提供的 API 進行 request 並且將電影海報圖列在首頁
 * 首頁為列出當時熱門的電影，原因是default_response是以熱門度當搜尋標準的：
-```
+```python
 default_response = requests.get("https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key="+MOVIE_DB_API_KEY)
 ```
 * 若是使用右上角的搜尋，那麼進入首頁的方法為"POST"，則會依照搜尋字列出搜尋結果
@@ -41,7 +40,7 @@ default_response = requests.get("https://api.themoviedb.org/3/discover/movie?sor
 
 ## 登入後畫面如此
 ![](https://i.imgur.com/bIXigoi.jpg)
-```
+```python
 @app.route("/register", methods = ["GET", "POST"])
 def register():
     form = RegisterForm()
@@ -93,7 +92,7 @@ def login():
 ```
 * 註冊帳密會經過加密
     * 在register裡面這樣子實現：
-        ```
+        ```python
         hash_pass = generate_password_hash(
                         form.password.data,
                         method = "pbkdf2:sha256",
@@ -101,7 +100,7 @@ def login():
                     )
         ```
     * 在login裡面這樣子驗證：
-        ```
+        ```python
         # Check stored password hash against entered password hashed
         elif not check_password_hash(user.password, password):
             flash("Password incorrect, please try again.",'error')
@@ -120,7 +119,7 @@ def login():
 ![](https://i.imgur.com/1ABoHcr.png)
 #### 藍色按鈕中應該為 "Add to cart"才對（在作品中已修正錯誤）
 ![](https://i.imgur.com/Nxn3tnf.png)
-```
+```python
 @app.route("/show-movie/<id>")
 def show_single_movie(id):
     global get_movie
@@ -140,7 +139,7 @@ def show_single_movie(id):
         return redirect(url_for("show_single_movie", id = id))
 ```
 * 在詳細頁面的地方如何將已在cart的電影列出 "Added to cart"的方法為：
-```
+```python
 movie = Cart.query.filter_by(buyer=current_user.email, is_purchased=False, product_id=id).first()
 if movie:
     message = "Added to cart"
@@ -148,7 +147,7 @@ else:
     message = ""
 ```
 * 並且在點下藍色按鈕"Add to cart"後，將資料加入到cart資料庫的方法為：
-```
+```python
 @app.route("/add-to-cart/<id>")
 def add_to_cart(id):
     if not current_user.is_authenticated:
@@ -173,7 +172,7 @@ def add_to_cart(id):
 
 ## 在menu bar 中點進cart 中，可以看到購買商品資訊
 ![](https://i.imgur.com/gE18ec6.png)
-```
+```python
 @app.route("/cart")
 def show_cart():
     if not current_user.is_authenticated:
@@ -195,11 +194,11 @@ def show_cart():
                            public_key = stripe_public_key)
 ```
 * 在購物車中列出尚未付費的電影：
-```
+```python
 all_items = Cart.query.filter_by(buyer = current_user.email, is_purchased = False).all()
 ```
 * 並且依照設定的標準收費（每租五部電影給2元的折扣）：
-```
+```python
 for item in all_items:
     total_price += item.price
 discount = 0
@@ -214,7 +213,7 @@ payable_amount = int(total_price - discount)
 ![](https://i.imgur.com/VLQUUIh.png)
 ![](https://i.imgur.com/7B5UnCR.png)
 
-```
+```python
 @app.route("/create-checkout-session", methods=["POST"])
 @login_required
 def create_checkout_session():
@@ -257,7 +256,7 @@ def failed():
     return render_template("cancel.html")
 ```
 * 我是利用stripe來處理金流的，金額單位是cent，因此要乘以100，若是成功則頁面轉至success_url，失敗則是轉至cancel_url：
-```
+```python
 session = stripe.checkout.Session.create(
     payment_method_types=["card"],
     line_items=[{
@@ -276,7 +275,7 @@ session = stripe.checkout.Session.create(
 )
 ```
 * 若是成功付費，則將 is_purchased 為 False 的 tag 改成 True
-```
+```python
 global cart_list
 non_purchased_items = Cart.query.filter_by(buyer=current_user.email, is_purchased=False).all()
 for item in non_purchased_items:
@@ -292,7 +291,7 @@ cart_list=""
 ![](https://i.imgur.com/gLIGsvB.jpg)
 
 * 我在dashboard中，分為cart_movies(已購買為非)，以及purchased_movies(已購買為是)
-```
+```python
 @app.route("/dashboard")
 @login_required
 def dashboard():
