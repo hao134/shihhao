@@ -4,7 +4,7 @@
 ##  首頁如此
 ![](https://i.imgur.com/ZrriVuE.png)
 是由 Heading.jsx 定義了 Keeper的開頭
-```javascript=
+```javascript
 import React from "react";
 import HighlightIcon from "@mui/icons-material/Highlight";
 
