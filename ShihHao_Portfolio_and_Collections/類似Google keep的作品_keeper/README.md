@@ -22,7 +22,7 @@ function Heading() {
 export default Heading;
 ```
 還有App.jsx 定義了中間的執行部分：
-```javascript=
+```javascript
 import React, { useState } from "react";
 import Heading from "./Heading";
 import Footer from "./Footer";
@@ -55,7 +55,7 @@ export default App;
 
 #### 以下code 來自CreatArea.jsx
 #### isExpanded預設是false，當按下input form時會，textarea會變大
-```jsx=
+```jsx
 {isExpanded ? (
   <input
     name="title"
@@ -75,7 +75,7 @@ export default App;
 />
 ```
 #### 當textarea漲大時，＋符號會同時zoom in，這個功能是由mui/material的Zoom和Fab實現的
-```jsx=
+```jsx
 <Zoom in={isExpanded}>
   <Fab
     onClick={(event) => {
@@ -97,7 +97,7 @@ export default App;
 ## 按下 + 就可以新增待辦事項
 ![](https://i.imgur.com/a5KDbSe.png)
 #### addItem定義在App.jsx
-```jsx=
+```jsx
 function App() {
   const [items, setItems] = useState([]);
   console.log(items);
@@ -119,7 +119,7 @@ function App() {
 }
 ```
 #### 當來自CreateArea.jsx中的Fab中的＋符號被按下時，會觸發添加note的功能（在前端畫面添加時也將note添加到後端資料庫）：
-```jsx=
+```jsx
 <Fab
   onClick={(event) => {
     props.onAdd(inputItem);
@@ -138,7 +138,7 @@ function App() {
 ## 按下 垃圾桶符號就能刪除待辦事項
 ![](https://i.imgur.com/ZoacLMm.png)
 #### delete按鈕被設定在每個note上
-```jsx=
+```jsx
 {posts.map((item, index) => (
   <Note
     key={index}
@@ -150,7 +150,7 @@ function App() {
 ))}
 ```
 
-```jsx=
+```jsx
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -173,7 +173,7 @@ function Note(props) {
 export default Note;
 ```
 #### 當按下刪除按鈕後會觸發刪除功能（當後端刪除後，重新渲染得到已刪除該note的頁面）：
-```jsx=
+```jsx
 const deleteItem = (id) => {
   axios
     .delete(`/delete/${id}`)
@@ -184,7 +184,7 @@ const deleteItem = (id) => {
 ```
 
 ## 以下是我的後端配置：
-```javascript=
+```javascript
 //Define keeperSchema
 const keeperSchema = {
   title: String,
