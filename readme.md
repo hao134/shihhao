@@ -22,6 +22,7 @@
 
 * 了解web development的相關技術，實做具有易懂好維護的api
     * [完整的restful flask api學習，能作為開發的依據](https://github.com/hao134/shihhao/tree/main/Restful_Api_with_Flask)
+    * [赫爾辛基大學的fullstackopen課程，使用javascript為語言，react為框架的一系列網頁課程紀錄](https://github.com/hao134/fullstackopen)
     * [完整的golang restful api 學習，亦能作為開發的依據](https://github.com/hao134/shihhao/tree/main/LearnGolang)
 
 * 了解關聯式資料庫，及sql語法
@@ -35,6 +36,8 @@
 
 * 有撰寫自動化測試經驗(unit test)
     * [在學backend golang 裡面有學到針對各項功能的unit test](https://github.com/hao134/shihhao/tree/main/LearnGolang/api)
+    * [在fullstackopen課程裡的關於後端的unit test](https://github.com/hao134/fullstackopen/tree/main/part4_blogList/tests)
+    * [在fullstackopen課程裡的關於前端的test](https://github.com/hao134/fullstackopen/tree/main/part5_bloglist_frontend/src/components)
 
 * 曾使用過第三方的Web Service (facebook/google)
     * [我曾在一個作品中學到如何串接第三方OAuth]( https://github.com/hao134/web_development/tree/main/32_Secrets%20)
