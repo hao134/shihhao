@@ -16,8 +16,8 @@
 
 並且在觀察了徵才訊息後，我去加強了一些我尚不足的部分後，我歸納出我有的特質如下，
 
-* 熟悉一種以上的高階語言(python, node.js, golang)，並有後端相關開發經驗
-    * [內含使用python以及node.js寫成的網頁作品](https://github.com/hao134/shihhao/tree/main/ShihHao_Portfolio_and_Collections)
+* 熟悉或認識一種以上的高階語言(python, javascript, golang)，並有後端相關開發經驗
+    * [內含使用python以及javascript寫成的網頁作品](https://github.com/hao134/shihhao/tree/main/ShihHao_Portfolio_and_Collections)
     * [使用golang完成的完整restful網頁學習](https://github.com/hao134/shihhao/tree/main/LearnGolang)
 
 * 了解web development的相關技術，實做具有易懂好維護的api
