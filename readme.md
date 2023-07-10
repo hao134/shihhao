@@ -57,4 +57,4 @@
     * [在上述的我的主要作品中的電影租借系統有使用到stripe作為我處理信用卡金流的工具](https://github.com/hao134/ShihHao_Portfolio_and_Collections/tree/master/電影租借電子商店)
 
 * 在就學時期就有寫程式經驗(python，linux bash script，科學計算)
-    * [我的研究所論文是關於機器學習的，為了完成的論文，需要一些關於程式科學運算的技巧和學習](https://thesis.lib.ncku.edu.tw/thesis/detail/0db4f1fc58f1c770ca809dd058df693e/)
+    * [我的研究所論文是關於機器學習的，為了完成論文，需要一些關於程式科學運算的技巧和學習](https://thesis.lib.ncku.edu.tw/thesis/detail/0db4f1fc58f1c770ca809dd058df693e/)
