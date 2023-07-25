@@ -1,4 +1,27 @@
 # 自我介紹
+我是黃世豪，大學畢業於東華物理系，研究所畢業於成大物理系，主要的專業為計算物理，因此我對於寫程式已經有幾年的經驗，求學階段主要是寫matlab和python還有一些linux script來進行一些科學運算及繪圖，以下是我的論文：
+論文-使用機器學習尋找Slater-Koster方法的參數
+https://thesis.lib.ncku.edu.tw/thesis/detail/0db4f1fc58f1c770ca809dd058df693e/
+
+畢業後開始工作後感到對寫網頁的興趣，因此在這一年多時間內自學了網頁相關課程，並且結合所學，有了以下三個主要作品：
+電影租借電子商店
+https://github.com/hao134/ShihHao_Portfolio_and_Collections/tree/master/%E9%9B%BB%E5%BD%B1%E7%A7%9F%E5%80%9F%E9%9B%BB%E5%AD%90%E5%95%86%E5%BA%97
+線上商店，商品是租借電影，並且使用stripe來實現付費系統
+###### python, flask, bootstrap, flask_sqlalchemy, stripe
+
+類似Google keep 的作品 keeper
+https://github.com/hao134/ShihHao_Portfolio_and_Collections/tree/master/%E9%A1%9E%E4%BC%BCGoogle%20keep%E7%9A%84%E4%BD%9C%E5%93%81_keeper
+用Reactjs 實現類似於google keep的網頁，選擇mongodb作為database
+###### React, mongodb
+
+輸入資料選擇管線
+https://github.com/hao134/ShihHao_Portfolio_and_Collections/tree/master/ 輸入資料選擇管線
+計算何種包覆材料能夠包覆住指定數量的線材的網站
+###### python, pandas, Numpy, flask
+
+在今年(2023)的上半年，我跟著赫爾辛基大學開設的全端課程（文字教材，https://fullstackopen.com/)，並在github上紀錄下我的學習歷程(https://github.com/hao134/fullstackopen)，算是對原本認識的網頁知識有個更全面的暸解。
+###### react, redux, nodes, graphql, typescript, mongodb
+
 我是黃世豪，大學畢業於東華物理系，研究所畢業於成大物理系，主要的專業為計算物理，因此我對於寫程式已經有幾年的經驗，求學階段主要是寫matlab和python還有一些linux script來進行一些科學運算及繪圖，畢業後開始工作後感到對寫網頁的興趣，因此在這一年多時間內自學了網頁相關課程，並且結合所學，有了以下三個**主要作品**：
 #### [電影租借電子商店](https://github.com/hao134/shihhao/tree/main/ShihHao_Portfolio_and_Collections/電影租借電子商店)
 線上商店，商品是租借電影，並且使用stripe來實現付費系統
