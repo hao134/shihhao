@@ -3,6 +3,8 @@
 #### [論文-使用機器學習尋找Slater-Koster方法的參數](https://thesis.lib.ncku.edu.tw/thesis/detail/0db4f1fc58f1c770ca809dd058df693e/)
 ###### python, tensorflow, linux script, matlab, numpy
 
+---
+
 畢業後開始工作後感到對寫網頁的興趣，因此在這一年多時間內自學了網頁相關課程，並且結合所學，有了以下**三個主要作品**：
 #### [電影租借電子商店](https://github.com/hao134/shihhao/tree/main/ShihHao_Portfolio_and_Collections/電影租借電子商店)
 線上商店，商品是租借電影，並且使用stripe來實現付費系統
