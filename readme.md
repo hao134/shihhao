@@ -17,7 +17,6 @@
 ###### python, pandas, numpy, flask
 
 在今年(2023)的上半年，我跟著赫爾辛基大學開設的全端課程（文字教材，https://fullstackopen.com/ )，並在github上紀錄下我的學習歷程，算是對原本認識的網頁知識有個更全面的暸解。
-
 #### [fullstackopen 學習歷程](https://github.com/hao134/fullstackopen)
 ###### react, redux, nodes, graphql, typescript, mongodb
 
